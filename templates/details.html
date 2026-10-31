@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrar's Office Class Details</title>
+</head>
+<body>
+    <h1>Registrar's Office Class Details</h1>
+    
+    <div id="classDetails">
+        <h3>Class Details</h3>
+        <ul>
+            <li><strong>Class Id:</strong> {{ details.classid }}</li>
+            <li><strong>Days:</strong> {{ details.days }}</li>
+            <li><strong>Start Time:</strong> {{ details.starttime }}</li>
+            <li><strong>End Time:</strong> {{ details.endtime }}</li>
+            <li><strong>Building:</strong> {{ details.bldg }}</li>
+            <li><strong>Room:</strong> {{ details.roomnum }}</li>
+        </ul>
+
+        <h3>Course Details</h3>
+        <ul>
+            <li><strong>Course Id:</strong> {{ details.courseid }}</li>
+            <li><strong>Departments and Numbers:</strong> {{ details.deptcoursenums | join(', ') }}</li>
+            <li><strong>Area:</strong> {{ details.area }}</li>
+            <li><strong>Title:</strong> {{ details.title }}</li>
+            <li><strong>Description:</strong> {{ details.descrip }}</li>
+            <li><strong>Prerequisites:</strong> {{ details.prereqs }}</li>
+            <li><strong>Professors:</strong> {{ details.profnames | join(', ') }}</li>
+        </ul>
+    </div>
+    
+    <br>
+    
+    <a href="/regoverviews">Class Overviews</a>
+</body>
+</html>
