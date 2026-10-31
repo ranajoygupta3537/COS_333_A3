@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrar's Office Class Search</title>
+</head>
+<body>
+    <h1>Registrar's Office Class Search</h1>
+
+    <form action="/regoverviews" method="get">
+        Dept:
+        <input type="text" id="dept" name="dept" value="{{ dept }}" autofocus>
+        
+        Number:
+        <input type="text" id="coursenum" name="coursenum" value="{{ coursenum }}">
+        
+        Area:
+        <input type="text" id="area" name="area" value="{{ area }}">
+        
+        Title:
+        <input type="text" id="title" name="title" value="{{ title }}">
+        
+        <input type="submit" id="submitButton" value="Submit">
+    </form>
+
+    <br>
+
+    <table id="overviewsTable" border="1">
+        <thead>
+            <tr>
+                <th>ClassId</th>
+                <th>Dept</th>
+                <th>Num</th>
+                <th>Area</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cls in classes %}
+            <tr>
+                <td><a href="/regdetails?classid={{ cls.classid }}">{{ cls.classid }}</a></td>
+                <td>{{ cls.dept }}</td>
+                <td>{{ cls.coursenum }}</td>
+                <td>{{ cls.area }}</td>
+                <td>{{ cls.title }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('overviewsTable').setAttribute('rand', Math.random());
+    </script>
+</body>
+</html>
