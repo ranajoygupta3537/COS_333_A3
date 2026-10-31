@@ -117,7 +117,6 @@ def get_details(classid):
                 'profnames': profnames
             }
             return payload
-#-----------------------------------------------------------------------
 
 @app.route('/', methods=['GET'])
 @app.route('/regoverviews', methods=['GET'])
@@ -198,7 +197,6 @@ def details():
         print(f"{sys.argv[0]}: {ex}", file=sys.stderr)
         html_code = flask.render_template('error.html', message=GENERIC_ERROR_MSG)
         return flask.make_response(html_code)          
-#-----------------------------------------------------------------------
 
 def main():
     parser = argparse.ArgumentParser(
