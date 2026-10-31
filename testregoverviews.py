@@ -5,6 +5,8 @@
 # Author: Ranajoy Gupta
 #-----------------------------------------------------------------------
 
+"""Tests the Registrar application's handling of overviews requests."""
+
 import sys
 import time
 import argparse
@@ -13,32 +15,28 @@ import playwright.sync_api
 MAX_LINE_LENGTH = 72
 UNDERLINE = '-' * MAX_LINE_LENGTH
 
-def get_args():
-
+def parse_args():
+    """Parses command-line arguments for testing script."""
     parser = argparse.ArgumentParser(
         description='Test the ability of the reg application to '
-            + 'handle "primary" (class overviews) queries')
-
-    parser.add_argument(
-        'serverURL', metavar='serverURL', type=str,
-        help='the URL of the reg application')
-
-    parser.add_argument(
-        'browser', metavar='browser', type=str,
-        choices=['firefox', 'chrome'],
-        help='the browser (firefox or chrome) that you want to use')
+            + 'handle "primary" (class overviews) queries'
+    )
+    parser.add_argument('serverURL', metavar='serverURL', type=str,
+                        help='the URL of the reg application')
+    parser.add_argument('browser', metavar='browser', type=str,
+                        choices=['firefox', 'chrome'],
+                        help='the browser (firefox or chrome) that you want to use')
 
     args = parser.parse_args()
-
-    return (args.serverURL, args.browser)
+    return args.serverURL, args.browser
 
 def print_flush(message):
-
+    """Prints a message and flushes stdout."""
     print(message)
     sys.stdout.flush()
 
 def run_test(server_url, browser_process, input_values):
-
+    """Tests the overviews page with specific form inputs."""
     print_flush(UNDERLINE)
     print_flush('dept: |' + input_values.get('dept', '') + '|')
     print_flush('coursenum: |' + input_values.get('coursenum', '') +'|')
@@ -77,52 +75,39 @@ def run_test(server_url, browser_process, input_values):
         print(str(ex), file=sys.stderr)
 
 def main():
-
-    server_url, browser = get_args()
+    """Runs automated tests against overviews client."""
+    server_url, browser = parse_args()
 
     with playwright.sync_api.sync_playwright() as pw:
-
         if browser == 'chrome':
             browser_process = pw.chromium.launch()
         else:
             browser_process = pw.firefox.launch()
 
-        run_test(server_url, browser_process,
-            {'dept':'COS'})
-
-        run_test(server_url, browser_process,
-            {'dept':'COS', 'coursenum':'2', 'area':'qr',
-            'title':'intro'})
-            
         run_test(server_url, browser_process, 
-            {'dept':'cOs', 'area':'qR', 'title':'InTrO'})
-            
+                 {'dept': 'COS'})
         run_test(server_url, browser_process, 
-            {'title':' programming '})
-            
+                 {'dept': 'COS', 'coursenum': '2', 'area': 'qr', 'title': 'intro'})
         run_test(server_url, browser_process, 
-            {'coursenum':'3'})
-            
+                 {'dept': 'cOs', 'area': 'qR', 'title': 'InTrO'})
         run_test(server_url, browser_process, 
-            {'dept':'NOTADEPARTMENT'})
-            
+                 {'title': ' programming '})
         run_test(server_url, browser_process, 
-            {'coursenum':'999'})
-            
+                 {'coursenum': '3'})
         run_test(server_url, browser_process, 
-            {'title':'%'})
-            
+                 {'dept': 'NOTADEPARTMENT'})
         run_test(server_url, browser_process, 
-            {'title':'_'})
-            
+                 {'coursenum': '999'})
         run_test(server_url, browser_process, 
-            {'title':'\\'})
-            
+                 {'title': '%'})
         run_test(server_url, browser_process, 
-            {'title':"'"})
-            
+                 {'title': '_'})
         run_test(server_url, browser_process, 
-            {'title':'"'})
+                 {'title': '\\'})
+        run_test(server_url, browser_process, 
+                 {'title': "'"})
+        run_test(server_url, browser_process, 
+                 {'title': '"'})
 
 if __name__ == '__main__':
     main()
