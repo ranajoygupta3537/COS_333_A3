@@ -24,7 +24,8 @@ def parse_args():
                         help='the URL of the reg application')
     parser.add_argument('browser', metavar='browser', type=str,
                         choices=['firefox', 'chrome'],
-                        help='the browser (firefox or chrome) that you want to use')
+                        help='the browser (firefox or chrome) '
+                             'that you want to use')
 
     args = parser.parse_args()
     return args.serverURL, args.browser
@@ -39,7 +40,7 @@ def run_test(server_url, browser_process, classid):
     print_flush(UNDERLINE)
     print_flush(classid)
     print_flush(UNDERLINE)
-    
+
     try:
         page = browser_process.new_page()
         page.goto(server_url)
@@ -58,11 +59,11 @@ def run_error_test(server_url, browser_process, route, test_name):
     print_flush(UNDERLINE)
     print_flush(test_name)
     print_flush(UNDERLINE)
-    
+
     try:
         page = browser_process.new_page()
         page.goto(server_url + route)
-        
+
         body = page.locator('body')
         print_flush(body.inner_text())
 
@@ -82,13 +83,17 @@ def main():
         run_test(server_url, browser_process, '8321')
         run_test(server_url, browser_process, '9032')
 
-        run_error_test(server_url, browser_process, '/regdetails?classid=99999', 
+        run_error_test(server_url, browser_process,
+                       '/regdetails?classid=99999',
                        'Non-existing classid')
-        run_error_test(server_url, browser_process, '/regdetails?classid=abcd', 
+        run_error_test(server_url, browser_process,
+                       '/regdetails?classid=abcd',
                        'Non-integer classid')
-        run_error_test(server_url, browser_process, '/regdetails?classid=', 
+        run_error_test(server_url, browser_process,
+                       '/regdetails?classid=',
                        'Missing classid value')
-        run_error_test(server_url, browser_process, '/regdetails', 
+        run_error_test(server_url, browser_process,
+                       '/regdetails',
                        'Missing classid parameter')
 
 if __name__ == '__main__':
