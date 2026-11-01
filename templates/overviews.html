@@ -6,23 +6,36 @@
 <body>
     <h1>Registrar's Office Class Search</h1>
 
+    <hr>
+
     <form action="/regoverviews" method="get">
-        Dept:
-        <input type="text" id="dept" name="dept" value="{{ dept }}" autofocus>
-        
-        Number:
-        <input type="text" id="coursenum" name="coursenum" value="{{ coursenum }}">
-        
-        Area:
-        <input type="text" id="area" name="area" value="{{ area }}">
-        
-        Title:
-        <input type="text" id="title" name="title" value="{{ title }}">
-        
-        <input type="submit" id="submitButton" value="Submit">
+        <table>
+            <tbody>
+                <tr>
+                    <td style="text-align: right">Dept:</td>
+                    <td><input type="text" id="dept" name="dept" value="{{ dept }}" autofocus></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Number:</td>
+                    <td><input type="text" id="coursenum" name="coursenum" value="{{ coursenum }}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Area:</td>
+                    <td><input type="text" id="area" name="area" value="{{ area }}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">Title:</td>
+                    <td><input type="text" id="title" name="title" value="{{ title }}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" id="submitButton" value="Submit"></td>
+                </tr>
+            </tbody>
+        </table>
     </form>
 
-    <br>
+    <hr>
 
     <table id="overviewsTable" border="1">
         <thead>
@@ -50,5 +63,10 @@
     <script>
         document.getElementById('overviewsTable').setAttribute('rand', Math.random());
     </script>
+
+    <br>
+    <hr>
+
+    <p>Created by Ranajoy Gupta.</p>
 </body>
 </html>
