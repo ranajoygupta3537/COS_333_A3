@@ -6,31 +6,33 @@
 <body>
     <h1>Registrar's Office Class Details</h1>
     
-    <div id="classDetails">
-        <h3>Class Details</h3>
-        <ul>
-            <li><strong>Class Id:</strong> {{ details.classid }}</li>
-            <li><strong>Days:</strong> {{ details.days }}</li>
-            <li><strong>Start Time:</strong> {{ details.starttime }}</li>
-            <li><strong>End Time:</strong> {{ details.endtime }}</li>
-            <li><strong>Building:</strong> {{ details.bldg }}</li>
-            <li><strong>Room:</strong> {{ details.roomnum }}</li>
-        </ul>
+    <hr>
 
-        <h3>Course Details</h3>
-        <ul>
-            <li><strong>Course Id:</strong> {{ details.courseid }}</li>
-            <li><strong>Departments and Numbers:</strong> {{ details.deptcoursenums | join(', ') }}</li>
-            <li><strong>Area:</strong> {{ details.area }}</li>
-            <li><strong>Title:</strong> {{ details.title }}</li>
-            <li><strong>Description:</strong> {{ details.descrip }}</li>
-            <li><strong>Prerequisites:</strong> {{ details.prereqs }}</li>
-            <li><strong>Professors:</strong> {{ details.profnames | join(', ') }}</li>
-        </ul>
+    <div id="classDetails">
+        <p><strong>Class Id:</strong> {{ details.classid }}</p>
+        <p><strong>Days:</strong> {{ details.days }}</p>
+        <p><strong>Start Time:</strong> {{ details.starttime }}</p>
+        <p><strong>End Time:</strong> {{ details.endtime }}</p>
+        <p><strong>Building:</strong> {{ details.bldg }}</p>
+        <p><strong>Room:</strong> {{ details.roomnum }}</p>
+
+        <hr>
+
+        <p><strong>Course Id:</strong> {{ details.courseid }}</p>
+        <p><strong>Departments and Numbers:</strong> {{ details.deptcoursenums | join(', ') }}</p>
+        <p><strong>Area:</strong> {{ details.area }}</p>
+        <p><strong>Title:</strong> {{ details.title }}</p>
+        <p><strong>Description:</strong> {{ details.descrip }}</p>
+        <p><strong>Prerequisites:</strong> {{ details.prereqs }}</p>
+        <p><strong>Professors:</strong> {{ details.profnames | join(', ') }}</p>
     </div>
     
-    <br>
+    <hr>
     
-    <a href="/regoverviews">Class Overviews</a>
+    <p>Click here to do <a href="/regoverviews">another class search</a></p>
+
+    <hr>
+
+    <p>Created by Ranajoy Gupta.</p>
 </body>
 </html>
