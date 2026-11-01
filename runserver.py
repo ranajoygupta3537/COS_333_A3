@@ -5,6 +5,8 @@
 # Author: Ranajoy Gupta
 #-----------------------------------------------------------------------
 
+"""Flask web server for the Registrar application."""
+
 import sys
 import argparse
 import sqlite3
@@ -199,6 +201,7 @@ def details():
         return flask.make_response(html_code)          
 
 def main():
+    """Parses command-line arguments and runs the Flask server."""
     parser = argparse.ArgumentParser(
         description="The registrar application"
     )
