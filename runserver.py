@@ -135,7 +135,7 @@ def overviews():
             coursenum = flask.request.cookies.get('coursenum', '')
             area = flask.request.cookies.get('area', '')
             title = flask.request.cookies.get('title', '')
-        
+
         criteria = {
             'dept': dept.strip(),
             'coursenum': coursenum.strip(),
@@ -144,27 +144,30 @@ def overviews():
         }
 
         classes = get_overviews(criteria)
-        
+
         html_code = flask.render_template(
-            'overviews.html', 
-            classes=classes, 
-            dept=dept, 
-            coursenum=coursenum, 
-            area=area, 
+            'overviews.html',
+            classes=classes,
+            dept=dept,
+            coursenum=coursenum,
+            area=area,
             title=title
         )
-        
+
         response = flask.make_response(html_code)
         response.set_cookie('dept', dept)
         response.set_cookie('coursenum', coursenum)
         response.set_cookie('area', area)
         response.set_cookie('title', title)
-        
+
         return response
 
     except Exception as ex:
         print(f"{sys.argv[0]}: {ex}", file=sys.stderr)
-        html_code = flask.render_template('error.html', message=GENERIC_ERROR_MSG)
+        html_code = flask.render_template(
+            'error.html',
+            message=GENERIC_ERROR_MSG
+        )
         return flask.make_response(html_code)
 
 @app.route('/regdetails', methods=['GET'])
@@ -172,33 +175,45 @@ def details():
     """Route for the class details page."""
     try:
         classid_str = flask.request.args.get('classid')
-        
+
         if classid_str is None or classid_str.strip() == '':
-            html_code = flask.render_template('error.html', message="missing classid")
+            html_code = flask.render_template(
+                'error.html',
+                message="missing classid"
+            )
             return flask.make_response(html_code)
-            
+
         try:
             classid = int(classid_str)
         except ValueError:
-            html_code = flask.render_template('error.html', message="non-integer classid")
+            html_code = flask.render_template(
+                'error.html',
+                message="non-integer classid"
+            )
             return flask.make_response(html_code)
 
         class_details = get_details(classid)
 
         if class_details is None:
             html_code = flask.render_template(
-                'error.html', 
+                'error.html',
                 message=f"no class with classid {classid} exists"
             )
             return flask.make_response(html_code)
 
-        html_code = flask.render_template('details.html', details=class_details)
+        html_code = flask.render_template(
+            'details.html',
+            details=class_details
+        )
         return flask.make_response(html_code)
 
     except Exception as ex:
         print(f"{sys.argv[0]}: {ex}", file=sys.stderr)
-        html_code = flask.render_template('error.html', message=GENERIC_ERROR_MSG)
-        return flask.make_response(html_code)          
+        html_code = flask.render_template(
+            'error.html',
+            message=GENERIC_ERROR_MSG
+        )
+        return flask.make_response(html_code)
 
 def main():
     """Parses command-line arguments and runs the Flask server."""
