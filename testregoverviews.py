@@ -25,7 +25,8 @@ def parse_args():
                         help='the URL of the reg application')
     parser.add_argument('browser', metavar='browser', type=str,
                         choices=['firefox', 'chrome'],
-                        help='the browser (firefox or chrome) that you want to use')
+                        help='the browser (firefox or chrome) '
+                             'that you want to use')
 
     args = parser.parse_args()
     return args.serverURL, args.browser
@@ -63,7 +64,7 @@ def run_test(server_url, browser_process, input_values):
         old_rand = overviews_table.get_attribute('rand')
         button.click()
         new_rand = overviews_table.get_attribute('rand')
-        
+
         while new_rand == old_rand:
             time.sleep(0.1)
             new_rand = overviews_table.get_attribute('rand')
@@ -84,29 +85,30 @@ def main():
         else:
             browser_process = pw.firefox.launch()
 
-        run_test(server_url, browser_process, 
+        run_test(server_url, browser_process,
                  {'dept': 'COS'})
-        run_test(server_url, browser_process, 
-                 {'dept': 'COS', 'coursenum': '2', 'area': 'qr', 'title': 'intro'})
-        run_test(server_url, browser_process, 
+        run_test(server_url, browser_process,
+                 {'dept': 'COS', 'coursenum': '2',
+                  'area': 'qr', 'title': 'intro'})
+        run_test(server_url, browser_process,
                  {'dept': 'cOs', 'area': 'qR', 'title': 'InTrO'})
-        run_test(server_url, browser_process, 
+        run_test(server_url, browser_process,
                  {'title': ' programming '})
-        run_test(server_url, browser_process, 
+        run_test(server_url, browser_process,
                  {'coursenum': '3'})
-        run_test(server_url, browser_process, 
+        run_test(server_url, browser_process,
                  {'dept': 'NOTADEPARTMENT'})
-        run_test(server_url, browser_process, 
+        run_test(server_url, browser_process,
                  {'coursenum': '999'})
-        run_test(server_url, browser_process, 
+        run_test(server_url, browser_process,
                  {'title': '%'})
-        run_test(server_url, browser_process, 
+        run_test(server_url, browser_process,
                  {'title': '_'})
-        run_test(server_url, browser_process, 
+        run_test(server_url, browser_process,
                  {'title': '\\'})
-        run_test(server_url, browser_process, 
+        run_test(server_url, browser_process,
                  {'title': "'"})
-        run_test(server_url, browser_process, 
+        run_test(server_url, browser_process,
                  {'title': '"'})
 
 if __name__ == '__main__':
