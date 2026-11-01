@@ -13,7 +13,7 @@ import sqlite3
 import contextlib
 import flask
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, template_folder='.')
 
 DATABASE_URL = 'file:reg.sqlite?mode=ro'
 GENERIC_ERROR_MSG = (
