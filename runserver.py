@@ -221,7 +221,8 @@ def main():
         description="The registrar application"
     )
     parser.add_argument('port', metavar='port', type=int,
-                        help='the port at which the server should listen')
+                        help='the port at which the server '
+                             'should listen')
 
     args = parser.parse_args()
 
