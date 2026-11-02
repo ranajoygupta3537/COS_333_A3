@@ -2,14 +2,14 @@
 
 Your full name and netid.
 
-[Enter your reply here.]
+Ranajoy Gupta - rg3537
 
 ------------------------------------------------------------------------
 
 A sentence asserting that you understand all aspects of the assignment
 solution that you submitted.
 
-[Enter your reply here.]
+I understand all aspects of the assignment solution that I submitted.
 
 ------------------------------------------------------------------------
 
@@ -25,7 +25,25 @@ must consist of sentences, each of which has one of these forms:
 Write "None" to indicate that you received no help from any sources of
 information other than the lecture material.
 
-[Enter your reply here.]
+For the command-line parsing aspect of the assignment solution I relied
+on prior knowledge gained by reading the official Python argparse 
+documentation.
+
+For the delay handling aspect of the assignment solution I relied on 
+prior knowledge gained by reading the official Python time 
+documentation.
+
+For the database querying aspect of the assignment solution I relied on 
+prior knowledge gained by reading the official Python sqlite3 and 
+contextlib documentation.
+
+For the web server and routing aspects of the assignment solution I 
+relied on prior knowledge gained by reading the official Python flask 
+documentation.
+
+For the automated browser testing aspect of the assignment solution I 
+relied on prior knowledge gained by reading the official Python playwright 
+documentation.
 
 ------------------------------------------------------------------------
 
@@ -34,20 +52,24 @@ doing the assignment. Your description must consist of lines of the
 form "aspect of your assignment solution: generative AI engines used."
 Write "None" to indicate that you received no help from generative AI.
 
-[Enter your reply here.]
+None
 
 ------------------------------------------------------------------------
 
 An indication of how much time you spent doing the assignment.
 
-[Enter your reply here.]
+About 10 hours.
 
 ------------------------------------------------------------------------
 
 Your assessment of the assignment: Did it help you to learn? What did
 it help you to learn? Do you have any suggestions for improvement? Etc.
 
-[Enter your reply here.]
+I thought this assignment was very interesting because it showed the 
+transition from socket programming to using a web framework like Flask. 
+It was a good challenge learning how to make the application stateful 
+using cookies and separating the Python backend logic from the HTML 
+templates.
 
 ------------------------------------------------------------------------
 
@@ -55,6 +77,6 @@ it help you to learn? Do you have any suggestions for improvement? Etc.
 the most favorable light. In particular you must describe all known
 bugs.
 
-[Enter your reply here.]
+None.
 
 ------------------------------------------------------------------------
